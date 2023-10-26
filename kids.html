@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>for kids</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands@0.4.0/dist/speech-commands.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+     <!--<div class="kids-header">
+        <div class="dropdown">
+            <button class="kids-menu">Islam</button>
+            <div class="dropdown-menu">
+                available soon
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="kids-menu">Skill</button>
+            <div class="dropdown-menu">
+                <div>
+                    <div class="dropdown-heading">Calistung</div>
+                    <div class="dropdown-link">
+                        <a href="membaca.html">membaca</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="dropdown-heading">English</div>
+                    <div class="dropdown-link">
+                        <a href="#">reading</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="dropdown-heading">Coding</div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <div id="membaca-part1">
+        <div id="menu-reading">
+            <a class="kids" id="membaca" onclick="mode_membaca()"><h2>belajar</h2></a>
+            <a class="teen" id="latihan"onclick="mode_Latihan()"><h2>latihan</h2></a>
+        </div>
+        <!--<div id="star">
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+        </div>-->
+        <div class="isinya" id="benarSalahBorder">
+            <button id="left" onclick="back()"><<</button>
+            <img id="letter"src="image/A.png" width="320px" height="320px" onclick="milihmode()">
+            <button id="right" onclick="next()">>></button>
+        </div>
+    </div>
+    <script>
+        let mode = "membaca";
+        let indexOfImg=Math.floor(Math.random() * 26);
+        let indexOfLetter=0;
+        const images=["image/A.png", "image/B.png","image/C.png","image/D.png","image/E.png","image/F.png","image/G.png","image/H.png","image/I.png","image/J.png","image/K.png","image/L.png","image/M.png","image/N.png","image/O.png","image/P.png","image/Q.png","image/R.png","image/S.png","image/T.png","image/U.png","image/V.png","image/W.png","image/X.png","image/Y.png","image/Z.png"];
+        const letterRecording=["recording/A.mp3","recording/B.mp3","recording/C.mp3","recording/D.mp3","recording/E.mp3","recording/F.mp3","recording/G.mp3","recording/H.mp3","recording/I.mp3","recording/J.mp3","recording/K.mp3","recording/L.mp3","recording/M.mp3","recording/N.mp3","recording/O.mp3","recording/P.mp3","recording/Q.mp3","recording/R.mp3","recording/S.mp3","recording/T.mp3","recording/U.mp3","recording/V.mp3","recording/W.mp3","recording/X.mp3","recording/Y.mp3","recording/Z.mp3"];
+        const image = document.getElementById("letter");
+        const buttonLatihan = document.getElementById("latihan");
+        const buttonMembaca = document.getElementById("membaca");
+        const benerSalah = document.getElementById("benarSalahBorder");
+        function changeImage(){
+            image.src.width = "320px";
+            image.src.height = "320px";
+            image.src =images[indexOfImg];
+        }
+        function next(){
+            indexOfImg=Math.floor(Math.random() * 26);
+            if (indexOfImg>= images.length){
+                indexOfImg=0
+            };
+            changeImage()
+        }
+        function back(){
+            indexOfImg=Math.floor(Math.random() * 26);
+            if (indexOfImg< 0){
+                indexOfImg=0
+            };
+            changeImage()
+        }
+        function recordingLetter(){
+            if (indexOfImg===0){
+                indexOfLetter=0
+            }
+            if (indexOfImg===1){
+                indexOfLetter=1
+            }
+            if (indexOfImg===2){
+                indexOfLetter=2
+            }
+            if (indexOfImg===3){
+                indexOfLetter=3
+            }
+            if (indexOfImg===4){
+                indexOfLetter=4
+            }
+            if (indexOfImg===5){
+                indexOfLetter=5
+            }
+            if (indexOfImg===6){
+                indexOfLetter=6
+            }
+            if (indexOfImg===7){
+                indexOfLetter=7
+            }
+            if (indexOfImg===8){
+                indexOfLetter=8
+            }
+            if (indexOfImg===9){
+                indexOfLetter=9
+            }
+            if (indexOfImg===10){
+                indexOfLetter=10
+            }
+            if (indexOfImg===11){
+                indexOfLetter=11
+            }
+            if (indexOfImg===12){
+                indexOfLetter=12
+            }
+            if (indexOfImg===13){
+                indexOfLetter=13
+            }
+            if (indexOfImg===14){
+                indexOfLetter=14
+            }
+            if (indexOfImg===15){
+                indexOfLetter=15
+            }
+            if (indexOfImg===16){
+                indexOfLetter=16
+            }
+            if (indexOfImg===17){
+                indexOfLetter=17
+            }
+            if (indexOfImg===18){
+                indexOfLetter=18
+            }
+            if (indexOfImg===19){
+                indexOfLetter=19
+            }
+            if (indexOfImg===20){
+                indexOfLetter=20
+            }
+            if (indexOfImg===21){
+                indexOfLetter=21
+            }
+            if (indexOfImg===22){
+                indexOfLetter=22
+            }
+            if (indexOfImg===23){
+                indexOfLetter=23
+            }
+            if (indexOfImg===24){
+                indexOfLetter=24
+            }
+            if (indexOfImg===25){
+                indexOfLetter=25
+            }
+            const audio= new Audio();
+            audio.src=letterRecording[indexOfLetter];
+            audio.play();
+        }
+        function latihan(){
+            console.log("latihan function mode on")
+            const URL = "https://teachablemachine.withgoogle.com/models/moVet_ULl/";
+
+            async function createModel() {
+                const checkpointURL = URL + "model.json"; // model topology
+                const metadataURL = URL + "metadata.json"; // model metadata
+        
+                const recognizer = speechCommands.create(
+                    "BROWSER_FFT", // fourier transform type, not useful to change
+                    undefined, // speech commands vocabulary feature, not useful for your models
+                    checkpointURL,
+                    metadataURL);
+        
+                // check that model and metadata are loaded via HTTPS requests.
+                await recognizer.ensureModelLoaded();
+                console.log("loading model and metadata...");
+        
+                return recognizer;
+            }
+            init();
+            console.log( "sedang menjalankan fungsi init")
+            async function init() {
+                const recognizer = await createModel();
+                const classLabels = recognizer.wordLabels();
+                console.log("mulai mendengarkan") // get class labels
+        
+                // listen() takes two arguments:
+                // 1. A callback function that is invoked anytime a word is recognized.
+                // 2. A configuration object with adjustable fields
+                recognizer.listen(result => {
+                    const scores = result.scores; // probability of prediction for each class
+                    // render the probability scores per class
+                    for (let i = 0; i < classLabels.length; i++) {
+                        if (result.scores[i] >= 0.50){
+                            if (classLabels === "A" && indexOfImg===0){
+                                LatihanBenar();
+                            }
+                            if (classLabels === "B" && indexOfImg===1){
+                                LatihanBenar();
+                            }
+                            if (classLabels === "C" && indexOfImg===2){
+                                LatihanBenar();
+                            }
+                            if (classLabels === "D" && indexOfImg===3){
+                                LatihanBenar();
+                            }
+                            if (classLabels === "E" && indexOfImg===4){
+                                LatihanBenar();
+                            }
+                            if (classLabels === "F" && indexOfImg===5){
+                                LatihanBenar();
+                            }
+                            if (classLabels === "G" && indexOfImg===6){
+                                LatihanBenar();
+                            }
+                            if (classLabels === "H" && indexOfImg===7){
+                                LatihanBenar();
+                            }
+                            if (classLabels === "I" && indexOfImg===8){
+                                LatihanBenar();
+                            }
+                            if (classLabels === "J" && indexOfImg===9){
+                                LatihanBenar();
+                            }
+                            if (classLabels === "K" && indexOfImg===10){
+                                LatihanBenar();
+                            }
+                            if (classLabels === "L" && indexOfImg===11){
+                                LatihanBenar();
+                            }
+                            if (classLabels === "M" && indexOfImg===12){
+                                LatihanBenar();
+                            }
+                            if (classLabels === "N" && indexOfImg===13){
+                                LatihanBenar();
+                            }
+                            if (classLabels === "O" && indexOfImg===14){
+                                LatihanBenar();
+                            }
+                            if (classLabels === "P" && indexOfImg===15){
+                                LatihanBenar();
+                            }
+                            if (classLabels === "Q" && indexOfImg===16){
+                                LatihanBenar();
+                            }
+                            if (classLabels === "R" && indexOfImg===17){
+                                LatihanBenar();
+                            }
+                            if (classLabels === "S" && indexOfImg===18){
+                                LatihanBenar();
+                            }
+                            if (classLabels === "T" && indexOfImg===19){
+                                LatihanBenar();
+                            }
+                            if (classLabels === "U" && indexOfImg===20){
+                                LatihanBenar();
+                            }
+                            if (classLabels === "V" && indexOfImg===21){
+                                LatihanBenar();
+                            }
+                            if (classLabels === "W" && indexOfImg===22){
+                                LatihanBenar();
+                            }
+                            if (classLabels === "X" && indexOfImg===23){
+                                LatihanBenar();
+                            }
+                            if (classLabels === "Y" && indexOfImg===24){
+                                LatihanBenar();
+                            }
+                            if (classLabels === "Z" && indexOfImg===25){
+                                LatihanBenar();
+                            }
+                        }
+                        
+                    }
+                     
+                }, {
+                    includeSpectrogram: true, // in case listen should return result.spectrogram
+                    probabilityThreshold: 0.75,
+                    invokeCallbackOnNoiseAndUnknown: true,
+                    overlapFactor: 0.50 // probably want between 0.5 and 0.75. More info in README
+                });
+        
+                // Stop the recognition in 5 seconds.
+                function stopya(){
+                    recognizer.stopListening();
+                    console.log("sudah selesai mendengarkan")
+                }
+                setTimeout(stopya, 5000);
+            }
+        }
+        function milihmode(){
+            if (mode === "membaca"){
+                benerSalah.style.border = "10px solid white";
+                console.log("fungsi memilih mode sedang berjalan, siap untuk function recording letter");
+                recordingLetter();
+            }
+            if(mode === "latihan"){
+                benerSalah.style.border = "10px solid white";
+                console.log("fungsi memilih mode sedang berjalan, siap untuk latihan");
+                latihan();
+            }
+        }
+        function mode_membaca(){
+            mode = "membaca";
+            buttonMembaca.style.color = "black";
+            buttonMembaca.style.backgroundColor = "white";
+            buttonMembaca.style.border= "10px solid black";
+            console.log(`mode: ${mode}`);	
+            buttonLatihan.style.backgroundColor = "#F9816A";
+            buttonLatihan.style.color = "WhiteSmoke";
+            buttonLatihan.style.border= "none";
+        }
+        function mode_Latihan(){
+            mode = "latihan";
+            buttonLatihan.style.color = "black";
+            buttonLatihan.style.backgroundColor = "white";
+            buttonLatihan.style.border= "10px solid black";
+            console.log(`mode: ${mode}`);
+            buttonMembaca.style.backgroundColor = "#F9816A";
+            buttonMembaca.style.color = "WhiteSmoke";
+            buttonMembaca.style.border= "none";
+        }
+        setTimeout(function LatihanBenar() {
+            // function code goes here
+            benerSalah.style.border = "10px solid green";
+        }, 5000);
+        setTimeout(function LatihanSalah() {
+            // function code goes here
+            benerSalah.style.border = "10px solid red";
+        }, 5000);
+        
+    </script>
+</body>
+</html>
